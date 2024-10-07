@@ -47,7 +47,7 @@ virtual void ExecuteTest() override; \
 static AutoRegisteringTest_##Name _unit_test_autoreg_##Name;\
 void AutoRegisteringTest_##Name::ExecuteTest()
 
-#define REQUIRE(Expr) \
+#define UNIT_TEST_REQUIRE(Expr) \
 { \
     const bool result = (Expr); \
     if (!result) \
@@ -56,6 +56,6 @@ void AutoRegisteringTest_##Name::ExecuteTest()
         return;        \
     }\
 }
-#define REQUIRE_FALSE(expr) REQUIRE(!(expr))
-#define FAIL() { MarkAsFailed(); return; }
-#define PASS() { return; }
+#define UNIT_TEST_REQUIRE_FALSE(expr) UNIT_TEST_REQUIRE(!(expr))
+#define UNIT_TEST_FAIL() { MarkAsFailed(); return; }
+#define UNIT_TEST_PASS() { return; }
