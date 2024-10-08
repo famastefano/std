@@ -2,10 +2,10 @@
 
 #include <Windows.h>
 
-namespace std
+namespace stl
 {
 bool IsDebuggerAttached()
 {
   return IsDebuggerPresent();
 }
-} // namespace std
+} // namespace stl

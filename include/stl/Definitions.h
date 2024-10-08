@@ -1,6 +1,6 @@
 #pragma once
 
-namespace std
+namespace stl
 {
 using u8  = unsigned char;
 using u16 = unsigned short;
@@ -14,4 +14,4 @@ using i64 = signed long long;
 
 using f32 = float;
 using f64 = double;
-} // namespace std
+} // namespace stl

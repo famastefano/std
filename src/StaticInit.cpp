@@ -1,19 +1,17 @@
-// TODO: Register https://en.cppreference.com/w/cpp/memory/new/set_new_handler, ideally with a debugbreak
-
 #include <new>
-#include <std/Allocator/GlobalAllocator.h>
-#include <std/Platform/Platform.h>
+#include <stl/Allocator/GlobalAllocator.h>
+#include <stl/Platform/Platform.h>
 
-namespace std
+namespace stl
 {
 struct StdStaticInit
 {
   StdStaticInit();
 };
 static StdStaticInit _stdStaticInit;
-} // namespace std
+} // namespace stl
 
-std::StdStaticInit::StdStaticInit()
+stl::StdStaticInit::StdStaticInit()
 {
   std::set_new_handler(+[] {
     if (IsDebuggerAttached())

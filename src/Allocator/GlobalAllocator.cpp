@@ -1,45 +1,18 @@
 #include <Windows.h>
-#include <cstddef>
-#include <intrin.h>
 #include <new>
-#include <std/Allocator/GlobalAllocator.h>
-#include <std/Assert/Assert.h>
+#include <stl/Allocator/GlobalAllocator.h>
+#include <stl/Assert/Assert.h>
 
-static std::GlobalAllocator globalAllocatorInstance;
+static stl::GlobalAllocator globalAllocatorInstance;
 
-namespace std
+namespace stl
 {
 IAllocator* globalAllocator = &globalAllocatorInstance;
 
-static void* FromOverAligned(void const* p)
-{
-  u64           addr = (u64)p;
-  unsigned long index;
-  _BitScanForward(&index, (unsigned long)addr);
-  addr >>= index - 4;
-  return (void*)addr;
-}
-
-static void* ToOverAligned(void const* p, i32 alignment)
-{
-  unsigned long index;
-  _BitScanForward(&index, alignment);
-  u64 const addr = (u64)p << (index - 4);
-  return (void*)addr;
-}
-
 void* GlobalAllocator::Alloc(i64 size, i32 const alignment)
 {
-  check(alignment % 2 == 0, "Alignment must be a power of 2.");
-
-  if (alignment <= MEMORY_ALLOCATION_ALIGNMENT)
-    return HeapAlloc(MemHandle, HEAP_ZERO_MEMORY, size);
-
-  // TODO: verify correctness
-  i32 const deltaAlign  = alignment - MEMORY_ALLOCATION_ALIGNMENT;
-  size                 += deltaAlign;
-  void* p               = HeapAlloc(MemHandle, HEAP_ZERO_MEMORY, size);
-  return ToOverAligned(p, alignment);
+  check((alignment == 1 || !(alignment & 0x1)) && alignment <= MEMORY_ALLOCATION_ALIGNMENT, "Alignment must be a power of 2 and up to 16-byte aligned.");
+  return HeapAlloc(MemHandle, HEAP_ZERO_MEMORY, size);
 }
 
 void GlobalAllocator::Free(void const* p)
@@ -54,11 +27,14 @@ bool GlobalAllocator::FollowsContainerDuringMove()
 
 GlobalAllocator::GlobalAllocator()
 {
+  if (MemHandle)
+    return;
+
   MemHandle = GetProcessHeap();
   if (!MemHandle)
     MemHandle = HeapCreate(0, 0, 0);
 }
-} // namespace std
+} // namespace stl
 
 #pragma warning(disable : 28'251)
 void* operator new(std::size_t count)

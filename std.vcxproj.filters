@@ -15,22 +15,22 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\std\Allocator\Allocator.h">
+    <ClInclude Include="include\stl\Allocator\Allocator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\std\Allocator\GlobalAllocator.h">
+    <ClInclude Include="include\stl\Allocator\GlobalAllocator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\std\Platform\Platform.h">
+    <ClInclude Include="include\stl\Platform\Platform.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\std\API.h">
+    <ClInclude Include="include\stl\API.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\std\Assert\Assert.h">
+    <ClInclude Include="include\stl\Assert\Assert.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\std\Definitions.h">
+    <ClInclude Include="include\stl\Definitions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -44,7 +44,7 @@
     <ClCompile Include="src\StaticInit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="include\std\Platform\Platform.cpp">
+    <ClCompile Include="include\stl\Platform\Platform.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
