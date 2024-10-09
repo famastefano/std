@@ -14,6 +14,7 @@
     <ClInclude Include="include\stl\Allocator\Allocator.h" />
     <ClInclude Include="include\stl\Allocator\GlobalAllocator.h" />
     <ClInclude Include="include\stl\Assert\Assert.h" />
+    <ClInclude Include="include\stl\Container\Vector.h" />
     <ClInclude Include="include\stl\Definitions.h" />
     <ClInclude Include="include\stl\Platform\Platform.h" />
     <ClInclude Include="include\stl\API.h" />

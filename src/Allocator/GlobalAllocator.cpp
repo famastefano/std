@@ -25,6 +25,11 @@ bool GlobalAllocator::FollowsContainerDuringMove()
   return true;
 }
 
+bool GlobalAllocator::OwnedByContainer()
+{
+  return false;
+}
+
 GlobalAllocator::GlobalAllocator()
 {
   if (MemHandle)

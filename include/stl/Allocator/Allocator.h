@@ -11,6 +11,8 @@ namespace stl
 class STL_API IAllocator
 {
 public:
+  virtual ~IAllocator() = default;
+
   // Allocates a contiguous block of memory with at least `size` capacity.
   // Returns:
   //   success, a valid pointer
@@ -26,6 +28,10 @@ public:
   // If not, the memory needs to be taken over by the other allocator,
   // usually by copying everything.
   virtual bool FollowsContainerDuringMove() = 0;
+
+  // The container this allocator is passed to, will automatically destroy it
+  // depending on the operations performed on the container itself (destructor, changing allocator etc.)
+  virtual bool OwnedByContainer() = 0;
 };
 
 extern STL_API IAllocator* globalAllocator;

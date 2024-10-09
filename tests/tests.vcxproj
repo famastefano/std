@@ -87,6 +87,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Allocator\TestGlobalAllocator.cpp" />
+    <ClCompile Include="Containers\TestVector.cpp" />
     <ClCompile Include="Framework\UnitTest.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
